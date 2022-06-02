@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon /bin/www",
-    "test": "jest --watchAll"
+    "test": "NODE_ENV=test && jest",
+    "db:migrate:test": "cross-env NODE_ENV=test npx sequelize db:migrate"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -28,5 +29,8 @@
     "sequelize-cli": "^6.4.1",
     "supertest": "^6.2.3",
     "winston": "^3.7.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

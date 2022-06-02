@@ -1,4 +1,4 @@
-{
+module.exports = {
   "development": {
     "username": "db_user",
     "password": "alsdkfjl;eilaksfd90asf03",
@@ -7,11 +7,12 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "db_test_user",
+    "password": "test",
+    "database": "complain_test_db",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port":"5433"
   },
   "production": {
     "username": "root",
@@ -21,3 +22,5 @@
     "dialect": "postgres"
   }
 }
+
+

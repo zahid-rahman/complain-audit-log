@@ -27,14 +27,15 @@ const userRegister = async (req, res) => {
         delete response.password;
         return res.status(httpStatus.CREATED).json({
             message: "user is created successfully",
-            data: response,
+            data: null,
             responseCode: httpStatus.CREATED
         })
     }
     catch (error) {
+        console.error(error)
         return res.status(httpStatus.BAD_REQUEST).json({
             message: "Something went wrong",
-            error,
+            data: error,
             responseCode: httpStatus.BAD_REQUEST
         });
     }
@@ -62,13 +63,12 @@ const userLogin = async (req, res) => {
             const isValidatePassword = await bcrypt.compare(password, user.password);
             if(isValidatePassword) {
                 const token = jwt.sign({
-                    id: user.id,
                     email: user.email,
                     username: user.username
                 }, process.env.JWT_SECRET, { expiresIn: '1h' });
     
                 return res.status(httpStatus.OK).json({
-                    data: `Bearer ${token}`,
+                    data: token,
                     responseCode: httpStatus.OK
                 })
             }
