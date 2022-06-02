@@ -1,18 +1,9 @@
-var express = require('express');
-var router = express.Router();
-const httpStatus = require('http-status');
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/userController');
 
-router.post('/login', (req, res) => {
-  res.status(httpStatus.OK).json({
-    message: "Complain Audit Log Login API"
-  })
-});
+router.post('/login', userController.userLogin);
 
-router.post('/register', (req, res) => {
-  res.status(httpStatus.CREATED).json({
-    email: req.body.email,
-    username: req.body.username
-  })
-});
+router.post('/register', userController.userRegister);
 
 module.exports = router;
