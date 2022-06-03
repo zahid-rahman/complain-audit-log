@@ -1,3 +1,4 @@
 api/node_modules
 frontend/node_modules
-complain_db
+main_db_config/complain_db
+test_db_config/complain_test_db

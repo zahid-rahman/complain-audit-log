@@ -1,0 +1,17 @@
+version: '3'
+services:
+  pgdb:
+    container_name: complain-audit-test-db
+    image: postgres:13
+    restart: always
+    environment:
+      NODE_ENV: "test"
+      POSTGRES_USER: db_test_user
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: complain_test_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./complain_test_db:/var/lib/postgresql/data/
+    expose:
+      - 5433
